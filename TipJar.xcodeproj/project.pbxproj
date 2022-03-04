@@ -13,6 +13,7 @@
 		4D5BE06A27D2061000EB2BAE /* PaymentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BE06927D2061000EB2BAE /* PaymentDetailsView.swift */; };
 		4D5BE06C27D2061B00EB2BAE /* PaymentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BE06B27D2061B00EB2BAE /* PaymentDetailsViewModel.swift */; };
 		4D5BE07027D207CE00EB2BAE /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5BE06F27D207CE00EB2BAE /* PanelView.swift */; };
+		4D9F761327D22AC900EF1FB3 /* Views+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */; };
 		6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1927B6176F00E54296 /* TipJarApp.swift */; };
 		6C51DC1C27B6176F00E54296 /* PaymentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */; };
 		6C51DC1E27B6177000E54296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DC1D27B6177000E54296 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		4D5BE06927D2061000EB2BAE /* PaymentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsView.swift; sourceTree = "<group>"; };
 		4D5BE06B27D2061B00EB2BAE /* PaymentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsViewModel.swift; sourceTree = "<group>"; };
 		4D5BE06F27D207CE00EB2BAE /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views+ViewModifiers.swift"; sourceTree = "<group>"; };
 		6C51DC1627B6176F00E54296 /* TipJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51DC1927B6176F00E54296 /* TipJarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarApp.swift; sourceTree = "<group>"; };
 		6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormView.swift; sourceTree = "<group>"; };
@@ -122,12 +124,13 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
-		4D5BE06D27D207A700EB2BAE /* UIComponents */ = {
+		4D5BE06D27D207A700EB2BAE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4D9F760D27D22A0000EF1FB3 /* ViewModifiers */,
 				4D5BE06E27D207B400EB2BAE /* View */,
 			);
-			path = UIComponents;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		4D5BE06E27D207B400EB2BAE /* View */ = {
@@ -136,6 +139,14 @@
 				4D5BE06F27D207CE00EB2BAE /* PanelView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4D9F760D27D22A0000EF1FB3 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */,
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 		6C51DC0D27B6176F00E54296 = {
@@ -162,7 +173,7 @@
 		6C51DC1827B6176F00E54296 /* TipJar */ = {
 			isa = PBXGroup;
 			children = (
-				4D5BE06D27D207A700EB2BAE /* UIComponents */,
+				4D5BE06D27D207A700EB2BAE /* UI */,
 				4D5BE05F27D2046100EB2BAE /* Payment */,
 				6C51DC1927B6176F00E54296 /* TipJarApp.swift */,
 				6C51DC1D27B6177000E54296 /* Assets.xcassets */,
@@ -332,6 +343,7 @@
 				6C51DC1C27B6176F00E54296 /* PaymentFormView.swift in Sources */,
 				4D5BE06627D2050600EB2BAE /* PaymentsHistoryView.swift in Sources */,
 				4D5BE06A27D2061000EB2BAE /* PaymentDetailsView.swift in Sources */,
+				4D9F761327D22AC900EF1FB3 /* Views+ViewModifiers.swift in Sources */,
 				4D5BE07027D207CE00EB2BAE /* PanelView.swift in Sources */,
 				4D5BE06C27D2061B00EB2BAE /* PaymentDetailsViewModel.swift in Sources */,
 				6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */,

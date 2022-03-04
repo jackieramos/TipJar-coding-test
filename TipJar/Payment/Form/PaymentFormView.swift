@@ -9,6 +9,22 @@ import SwiftUI
 
 struct PaymentFormView: View {
 
+    @State private var showHistory: Bool = false
+
+    @ViewBuilder
+    private var header: some View {
+        HStack(spacing: .zero) {
+            Spacer()
+            Image("tipJarLogo", bundle: .main)
+            Spacer()
+            NavigationLink(isActive: $showHistory) {
+                PaymentsHistoryView(isShowing: $showHistory)
+            } label: {
+                Image("history", bundle: .main)
+            }
+        }
+    }
+
     @ViewBuilder
     private var enterAmount: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -156,22 +172,21 @@ struct PaymentFormView: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 32.0) {
-                HStack(spacing: .zero) {
-                    Spacer()
-                    Image("tipJarLogo", bundle: .main)
-                    Spacer()
-                    Image("history", bundle: .main)
+        NavigationView {
+            VStack(spacing: .zero) {
+                ScrollView {
+                    VStack(spacing: 32.0) {
+                        header
+                        enterAmount
+                        numberOfPeople
+                        tip
+                        summary
+                        footer
+                    }
+                    .padding(24)
                 }
-
-                enterAmount
-                numberOfPeople
-                tip
-                summary
-                footer
             }
-            .padding(24)
+            .hiddenNavigationBarStyle()
         }
     }
 }
