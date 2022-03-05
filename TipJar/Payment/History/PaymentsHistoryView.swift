@@ -10,11 +10,15 @@ import SwiftUI
 struct PaymentsHistoryView: View {
 
     @Binding var isShowing: Bool
+    @State private var showDetails: Bool = false
     
     var body: some View {
         ScrollView {
             VStack(spacing: 38.0) {
                 paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
+                    .onTapGesture {
+                        showDetails = true
+                    }
                 paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
                 paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
                 paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
@@ -27,6 +31,9 @@ struct PaymentsHistoryView: View {
         .padding(24.0)
         .navigationBarTitle("SAVED PAYMENTS", displayMode: .inline)
         .customBackButton(isShowing: $isShowing)
+        .modal(isShowing: $showDetails) {
+            PaymentDetailsView()
+        }
     }
 
     @ViewBuilder
