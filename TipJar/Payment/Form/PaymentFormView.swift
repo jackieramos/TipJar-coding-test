@@ -15,8 +15,11 @@ struct PaymentFormView: View {
     private var header: some View {
         HStack(spacing: .zero) {
             Spacer()
+
             Image("tipJarLogo", bundle: .main)
+
             Spacer()
+
             NavigationLink(isActive: $showHistory) {
                 PaymentsHistoryView(isShowing: $showHistory)
             } label: {
@@ -27,164 +30,130 @@ struct PaymentFormView: View {
 
     @ViewBuilder
     private var enterAmount: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: .spacing16) {
             Text("Enter amount")
-                .foregroundColor(.black)
+                .defaultBoldTextSize()
             PanelView {
-                HStack {
+                HStack(spacing: .zero) {
                     Text("$")
-                        .font(.system(size: 24))
+                        .largeBoldTextSize()
                     Spacer()
                     Text("200.00")
-                        .font(.system(size: 42))
+                        .extraLargeBoldTextSize()
                     Spacer()
                 }
-                .padding(.horizontal, 21.0)
-                .padding(.vertical, 17.0)
+                .padding(.horizontal, .spacing21)
+                .padding(.vertical, .spacing16)
             }
         }
     }
 
     @ViewBuilder
     private var numberOfPeople: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Number of people")
-                .foregroundColor(.black)
+        VStack(alignment: .leading, spacing: .spacing16) {
+            Text("How many people?")
+                .defaultBoldTextSize()
 
-            HStack {
-                VStack(spacing: .zero) {
-                    Button {
-                        
-                    } label: {
-                        Image("minus", bundle: .main)
-                    }
+            HStack(spacing: .zero) {
+                Button {
+                    print("Pressed")
+                } label: {
+                    Image("plus", bundle: .main)
                 }
-                .frame(width: 71, height: 71)
-                .overlay(
-                    Circle()
-                        .stroke(Color("d2d2d2", bundle: .main), lineWidth: 1)
-                )
+                .buttonStyle(CircularButtonStyle(size: 71.0))
 
                 Spacer()
 
                 Text("2")
-                    .font(.system(size: 42))
+                    .extraLargeBoldTextSize()
 
                 Spacer()
 
-                VStack(spacing: .zero) {
-                    Button {
-                        
-                    } label: {
-                        Image("plus", bundle: .main)
-                    }
+                Button {
+                    
+                } label: {
+                    Image("minus", bundle: .main)
                 }
-                .frame(width: 71, height: 71)
-                .overlay(
-                    Circle()
-                        .stroke(Color("d2d2d2", bundle: .main), lineWidth: 1)
-                )
+                .buttonStyle(CircularButtonStyle(size: 71.0))
             }
         }
     }
 
     @ViewBuilder
     private var tip: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: .spacing16) {
             Text("% TIP")
-                .foregroundColor(.black)
+                .defaultBoldTextSize()
             PanelView {
-                HStack {
+                HStack(spacing: .zero) {
                     Spacer()
                     Text("200.00")
-                        .font(.system(size: 42))
+                        .extraLargeBoldTextSize()
                     Spacer()
                     Text("%")
-                        .font(.system(size: 24))
+                        .largeBoldTextSize()
                 }
-                .padding(.horizontal, 21.0)
-                .padding(.vertical, 17.0)
+                .padding(.horizontal, .spacing21)
+                .padding(.vertical, .spacing16)
             }
         }
     }
 
     @ViewBuilder
     private var summary: some View {
-        VStack(spacing: 16) {
-            HStack {
+        VStack(spacing: .spacing16) {
+            HStack(spacing: .zero) {
                 Text("Total Tip")
-                    .font(.system(size: 16))
-                    .foregroundColor(.black)
+                    .defaultBoldTextSize()
                 Spacer()
                 Text("$20.00")
-                    .font(.system(size: 16))
-                    .foregroundColor(.black)
+                    .defaultBoldTextSize()
             }
 
-            HStack {
+            HStack(spacing: .zero) {
                 Text("Per Person")
-                    .font(.system(size: 24))
-                    .foregroundColor(.black)
+                    .largeBoldTextSize()
                 Spacer()
                 Text("$10.00")
-                    .font(.system(size: 24))
-                    .foregroundColor(.black)
+                    .largeBoldTextSize()
             }
         }
     }
 
     @ViewBuilder
     private var footer: some View {
-        VStack(alignment: .leading, spacing: 28.0) {
-            HStack(spacing: 13.0) {
-                VStack(spacing: .zero) {
-                    Button {
-                        
-                    } label: {
-                        Image("checkSelected", bundle: .main)
-                    }
+        VStack(alignment: .leading, spacing: .spacing28) {
+            HStack(spacing: .spacing13) {
+                Button {
+                    
+                } label: {
+                    Image("checkSelected", bundle: .main)
                 }
-                .frame(width: 31, height: 31)
-                .cornerRadius(7.0)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 7.0)
-                        .stroke(Color("f1790a", bundle: .main), lineWidth: 1)
-                )
+                .buttonStyle(CheckboxButtonStyle())
 
                 Text("Take photo of receipt")
-                    .font(.system(size: 16))
-                    .foregroundColor(.black)
+                    .defaultBoldTextSize()
             }
 
-            Button {
+            Button("Save payment") {
                 
-            } label: {
-                Text("Save payment")
-                    .padding(.vertical, 15.0)
             }
-            .frame(maxWidth: .infinity)
-            .background(
-                LinearGradient(gradient: Gradient(colors: [Color("f27a0a", bundle: .main), Color("d26e11", bundle: .main)]), startPoint: .top, endPoint: .bottom)
-            )
-            .foregroundColor(.white)
-            .cornerRadius(12.0)
+            .buttonStyle(CallToActionGradientButtonStyle())
         }
     }
 
     var body: some View {
         NavigationView {
-            VStack(spacing: .zero) {
-                ScrollView {
-                    VStack(spacing: 32.0) {
-                        header
-                        enterAmount
-                        numberOfPeople
-                        tip
-                        summary
-                        footer
-                    }
-                    .padding(24)
+            ScrollView {
+                VStack(spacing: .spacing32) {
+                    header
+                    enterAmount
+                    numberOfPeople
+                    tip
+                    summary
+                    footer
                 }
+                .padding(.spacing24)
             }
             .hiddenNavigationBarStyle()
         }

@@ -15,25 +15,24 @@ struct PaymentDetailsView: View {
                 .scaledToFit()
                 .frame(height: 399)
                 .background(.white)
-                .cornerRadius(12.0)
+                .cornerRadius(.radius12)
             
-            VStack(alignment: .leading, spacing: 12.0) {
+            VStack(alignment: .leading, spacing: .spacing12) {
                 Text("2021 January 21")
-                    .font(.system(size: 16))
+                    .defaultBoldTextSize()
                 HStack {
                     Text("$205.23")
-                        .font(.system(size: 24))
+                        .largeBoldTextSize()
                     Spacer()
                     Text("Tip: $20.52")
-                        .font(.system(size: 16))
-                        .foregroundColor(Color("7d7d7d", bundle: .main))
+                        .defaultBoldTextSize(Color("7d7d7d"))
                 }
             }
-            .padding(16.0)
+            .padding(.spacing16)
             .background(.white)
-            .cornerRadius(12.0)
+            .cornerRadius(.radius12)
         }
-        .padding(.horizontal, 38.0)
+        .padding(.horizontal, .spacing38)
     }
 }
 

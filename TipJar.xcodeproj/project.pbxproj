@@ -16,6 +16,10 @@
 		4D9F761327D22AC900EF1FB3 /* Views+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */; };
 		4D9F761627D230AA00EF1FB3 /* View+Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761527D230AA00EF1FB3 /* View+Modal.swift */; };
 		4D9F761827D311C200EF1FB3 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761727D311C200EF1FB3 /* ModalView.swift */; };
+		4D9F761B27D31D0300EF1FB3 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761A27D31D0300EF1FB3 /* Tip.swift */; };
+		4D9F761E27D325FC00EF1FB3 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761D27D325FB00EF1FB3 /* ButtonStyles.swift */; };
+		4D9F762027D3294A00EF1FB3 /* CGFloat+Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761F27D3294A00EF1FB3 /* CGFloat+Spacing.swift */; };
+		4D9F762227D32BBB00EF1FB3 /* Text+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F762127D32BBB00EF1FB3 /* Text+ViewModifiers.swift */; };
 		6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1927B6176F00E54296 /* TipJarApp.swift */; };
 		6C51DC1C27B6176F00E54296 /* PaymentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */; };
 		6C51DC1E27B6177000E54296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DC1D27B6177000E54296 /* Assets.xcassets */; };
@@ -53,6 +57,10 @@
 		4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views+ViewModifiers.swift"; sourceTree = "<group>"; };
 		4D9F761527D230AA00EF1FB3 /* View+Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modal.swift"; sourceTree = "<group>"; };
 		4D9F761727D311C200EF1FB3 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		4D9F761A27D31D0300EF1FB3 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		4D9F761D27D325FB00EF1FB3 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		4D9F761F27D3294A00EF1FB3 /* CGFloat+Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Spacing.swift"; sourceTree = "<group>"; };
+		4D9F762127D32BBB00EF1FB3 /* Text+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+ViewModifiers.swift"; sourceTree = "<group>"; };
 		6C51DC1627B6176F00E54296 /* TipJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51DC1927B6176F00E54296 /* TipJarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarApp.swift; sourceTree = "<group>"; };
 		6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormView.swift; sourceTree = "<group>"; };
@@ -133,24 +141,26 @@
 			children = (
 				4D9F761427D2308300EF1FB3 /* Extensions */,
 				4D9F760D27D22A0000EF1FB3 /* ViewModifiers */,
-				4D5BE06E27D207B400EB2BAE /* View */,
+				4D5BE06E27D207B400EB2BAE /* CustomViews */,
+				4D9F761D27D325FB00EF1FB3 /* ButtonStyles.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		4D5BE06E27D207B400EB2BAE /* View */ = {
+		4D5BE06E27D207B400EB2BAE /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				4D5BE06F27D207CE00EB2BAE /* PanelView.swift */,
 				4D9F761727D311C200EF1FB3 /* ModalView.swift */,
 			);
-			path = View;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		4D9F760D27D22A0000EF1FB3 /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
 				4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */,
+				4D9F762127D32BBB00EF1FB3 /* Text+ViewModifiers.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -159,8 +169,17 @@
 			isa = PBXGroup;
 			children = (
 				4D9F761527D230AA00EF1FB3 /* View+Modal.swift */,
+				4D9F761F27D3294A00EF1FB3 /* CGFloat+Spacing.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4D9F761927D31C9500EF1FB3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D9F761A27D31D0300EF1FB3 /* Tip.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		6C51DC0D27B6176F00E54296 = {
@@ -187,6 +206,7 @@
 		6C51DC1827B6176F00E54296 /* TipJar */ = {
 			isa = PBXGroup;
 			children = (
+				4D9F761927D31C9500EF1FB3 /* Models */,
 				4D5BE06D27D207A700EB2BAE /* UI */,
 				4D5BE05F27D2046100EB2BAE /* Payment */,
 				6C51DC1927B6176F00E54296 /* TipJarApp.swift */,
@@ -359,9 +379,13 @@
 				4D5BE06627D2050600EB2BAE /* PaymentsHistoryView.swift in Sources */,
 				4D9F761627D230AA00EF1FB3 /* View+Modal.swift in Sources */,
 				4D5BE06A27D2061000EB2BAE /* PaymentDetailsView.swift in Sources */,
+				4D9F761E27D325FC00EF1FB3 /* ButtonStyles.swift in Sources */,
+				4D9F762027D3294A00EF1FB3 /* CGFloat+Spacing.swift in Sources */,
 				4D9F761327D22AC900EF1FB3 /* Views+ViewModifiers.swift in Sources */,
 				4D5BE07027D207CE00EB2BAE /* PanelView.swift in Sources */,
+				4D9F761B27D31D0300EF1FB3 /* Tip.swift in Sources */,
 				4D5BE06C27D2061B00EB2BAE /* PaymentDetailsViewModel.swift in Sources */,
+				4D9F762227D32BBB00EF1FB3 /* Text+ViewModifiers.swift in Sources */,
 				6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

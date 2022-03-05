@@ -17,7 +17,7 @@ public struct PanelView<Content: View>: View {
     }
 
     public var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             content
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

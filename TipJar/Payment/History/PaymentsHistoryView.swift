@@ -28,7 +28,7 @@ struct PaymentsHistoryView: View {
                 paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
             }
         }
-        .padding(24.0)
+        .padding(.spacing24)
         .navigationBarTitle("SAVED PAYMENTS", displayMode: .inline)
         .customBackButton(isShowing: $isShowing)
         .modal(isShowing: $showDetails) {
@@ -39,15 +39,14 @@ struct PaymentsHistoryView: View {
     @ViewBuilder
     private func paymentItem(date: String, amount: String, totalTip: String) -> some View {
         HStack {
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: .spacing12) {
                 Text(date)
-                    .font(.system(size: 16))
+                    .defaultBoldTextSize()
                 HStack(spacing: 22) {
                     Text(amount)
-                        .font(.system(size: 24))
+                        .largeBoldTextSize()
                     Text(totalTip)
-                        .font(.system(size: 16))
-                        .foregroundColor(Color("7d7d7d", bundle: .main))
+                        .defaultBoldTextSize(Color("7d7d7d"))
                 }
             }
 
