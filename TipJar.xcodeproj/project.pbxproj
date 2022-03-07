@@ -27,6 +27,8 @@
 		4DFD2F4427D61747005175B5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F4327D61747005175B5 /* CoreDataManager.swift */; };
 		4DFD2F4D27D6206D005175B5 /* TipJar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F4B27D6206D005175B5 /* TipJar.xcdatamodeld */; };
 		4DFD2F4F27D63410005175B5 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F4E27D63410005175B5 /* DateFormatting.swift */; };
+		4DFD2F5127D659CD005175B5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F5027D659CD005175B5 /* CameraView.swift */; };
+		4DFD2F5327D65DD3005175B5 /* AppFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F5227D65DD3005175B5 /* AppFileManager.swift */; };
 		6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1927B6176F00E54296 /* TipJarApp.swift */; };
 		6C51DC1C27B6176F00E54296 /* PaymentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */; };
 		6C51DC1E27B6177000E54296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DC1D27B6177000E54296 /* Assets.xcassets */; };
@@ -75,6 +77,8 @@
 		4DFD2F4327D61747005175B5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4DFD2F4C27D6206D005175B5 /* TipJar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TipJar.xcdatamodel; sourceTree = "<group>"; };
 		4DFD2F4E27D63410005175B5 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
+		4DFD2F5027D659CD005175B5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		4DFD2F5227D65DD3005175B5 /* AppFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileManager.swift; sourceTree = "<group>"; };
 		6C51DC1627B6176F00E54296 /* TipJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51DC1927B6176F00E54296 /* TipJarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarApp.swift; sourceTree = "<group>"; };
 		6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormView.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				4D5BE06F27D207CE00EB2BAE /* PanelView.swift */,
 				4D9F761727D311C200EF1FB3 /* ModalView.swift */,
 				4DFD2F3C27D45629005175B5 /* KeyboardAccessoryView.swift */,
+				4DFD2F5027D659CD005175B5 /* CameraView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				4D9F762927D3BA9200EF1FB3 /* CurrencyFormatting.swift */,
 				4DFD2F3F27D61672005175B5 /* Constants.swift */,
 				4DFD2F4E27D63410005175B5 /* DateFormatting.swift */,
+				4DFD2F5227D65DD3005175B5 /* AppFileManager.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D9F761827D311C200EF1FB3 /* ModalView.swift in Sources */,
+				4DFD2F5127D659CD005175B5 /* CameraView.swift in Sources */,
 				4DFD2F4D27D6206D005175B5 /* TipJar.xcdatamodeld in Sources */,
 				4DFD2F4027D61672005175B5 /* Constants.swift in Sources */,
 				4D5BE06827D2051500EB2BAE /* PaymentsHistoryViewModel.swift in Sources */,
@@ -435,6 +442,7 @@
 				4D5BE07027D207CE00EB2BAE /* PanelView.swift in Sources */,
 				4D9F761B27D31D0300EF1FB3 /* Tip.swift in Sources */,
 				4D5BE06C27D2061B00EB2BAE /* PaymentDetailsViewModel.swift in Sources */,
+				4DFD2F5327D65DD3005175B5 /* AppFileManager.swift in Sources */,
 				4D9F762227D32BBB00EF1FB3 /* Text+ViewModifiers.swift in Sources */,
 				4D9F762A27D3BA9200EF1FB3 /* CurrencyFormatting.swift in Sources */,
 				4DFD2F4427D61747005175B5 /* CoreDataManager.swift in Sources */,
@@ -607,6 +615,7 @@
 				DEVELOPMENT_TEAM = 295N623Y7P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera for uploading photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -640,6 +649,7 @@
 				DEVELOPMENT_TEAM = 295N623Y7P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera for uploading photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

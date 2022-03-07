@@ -80,15 +80,16 @@ struct CheckboxButtonStyle: ButtonStyle {
             }
         }
 
-        var borderColor: Color {
+        func borderColor(_ isSelected: Bool) -> Color {
             switch self {
             case .default:
-                return Color("f1790a")
+                return isSelected ? Color("f1790a") : Color("e5e5e5")
             }
         }
     }
 
     public var style: Style = .default
+    public var isSelected: Bool = false
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -98,7 +99,7 @@ struct CheckboxButtonStyle: ButtonStyle {
             .cornerRadius(style.cornerRadius)
             .overlay(
                 RoundedRectangle(cornerRadius: style.cornerRadius)
-                    .stroke(style.borderColor, lineWidth: style.isBordered ? 1 : 0)
+                    .stroke(style.borderColor(isSelected), lineWidth: style.isBordered ? 1 : 0)
             )
     }
 }

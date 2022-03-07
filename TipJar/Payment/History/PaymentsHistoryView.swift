@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PaymentsHistoryView: View {
+    @StateObject private var viewModel: PaymentsHistoryViewModel = PaymentsHistoryViewModel()
+
     @FetchRequest(sortDescriptors: [SortDescriptor(\.savedDate, order: .reverse)])
     var tips: FetchedResults<Tip>
 
@@ -21,7 +23,10 @@ struct PaymentsHistoryView: View {
                     Button {
                         showDetails = true
                     } label: {
-                        paymentItem(date: tip.savedDate.default, amount: tip.amount, totalTip: "Tip: \(tip.totalTipAmount.toCurrencyString())")
+                        paymentItem(date: tip.savedDate.default,
+                                    amount: tip.amount,
+                                    totalTip: "Tip: \(tip.totalTipAmount.toCurrencyString())",
+                                    imageFileName: tip.imageFileName)
                     }
                 }
             }
@@ -35,7 +40,10 @@ struct PaymentsHistoryView: View {
     }
 
     @ViewBuilder
-    private func paymentItem(date: String, amount: NSDecimalNumber, totalTip: String) -> some View {
+    private func paymentItem(date: String,
+                             amount: NSDecimalNumber,
+                             totalTip: String,
+                             imageFileName: String) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: .spacing12) {
                 Text(date)
@@ -50,9 +58,9 @@ struct PaymentsHistoryView: View {
 
             Spacer()
 
-            Image("tipJarLogo", bundle: .main)
+            Image(uiImage: viewModel.getImage(imageFileName))
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .frame(width: 53.0, height: 53.0)
                 .cornerRadius(12)
         }

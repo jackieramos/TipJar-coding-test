@@ -10,7 +10,8 @@ import SwiftUI
 struct PaymentFormView: View, KeyboardReadable {
     @Environment(\.managedObjectContext) var context
     @StateObject private var viewModel: PaymentFormViewModel = PaymentFormViewModel()
-    @State private var showHistory: Bool = false
+    @State private var showCameraView: Bool = false
+    @State private var checkboxState: Bool = false
 
     @ViewBuilder
     private var header: some View {
@@ -21,8 +22,8 @@ struct PaymentFormView: View, KeyboardReadable {
 
             Spacer()
 
-            NavigationLink(isActive: $showHistory) {
-                PaymentsHistoryView(isShowing: $showHistory)
+            NavigationLink(isActive: $viewModel.showHistory) {
+                PaymentsHistoryView(isShowing: $viewModel.showHistory)
             } label: {
                 Image("history")
             }
@@ -129,19 +130,23 @@ struct PaymentFormView: View, KeyboardReadable {
         VStack(alignment: .leading, spacing: .spacing28) {
             HStack(spacing: .spacing13) {
                 Button {
-                    
+                    checkboxState = true
                 } label: {
-                    Image("checkSelected", bundle: .main)
+                    Image(checkboxState ? "checkSelected" : "checkUnselected", bundle: .main)
                 }
-                .buttonStyle(CheckboxButtonStyle())
+                .buttonStyle(CheckboxButtonStyle(isSelected: checkboxState))
 
                 Text("Take photo of receipt")
                     .defaultBoldTextSize()
             }
 
             Button("Save payment") {
-                viewModel.saveTip(context)
-                showHistory = true
+                if checkboxState {
+                    showCameraView = true
+                } else {
+                    viewModel.saveTip(context)
+                    viewModel.showHistory = true
+                }
             }
             .buttonStyle(CallToActionGradientButtonStyle())
         }
@@ -157,6 +162,15 @@ struct PaymentFormView: View, KeyboardReadable {
             }
             .animation(.default, value: viewModel.isKeyboardVisible)
         }
+    }
+
+    @ViewBuilder
+    private var cameraView: some View {
+        CameraView(isShowing: $showCameraView, selectedImage: $viewModel.image)
+    }
+
+    private var errorAlert: Alert {
+        Alert(title: Text("Something went wrong"), message: Text("Data can't be saved"))
     }
 
     var body: some View {
@@ -179,9 +193,8 @@ struct PaymentFormView: View, KeyboardReadable {
             .onReceive(keyboardPublisher) { value in
                 viewModel.isKeyboardVisible = value
             }
-            .alert(isPresented: $viewModel.showErrorAlert) {
-                Alert(title: Text("Something went wrong"), message: Text("Data can't be saved"))
-            }
+            .alert(isPresented: $viewModel.showErrorAlert) { errorAlert }
+            .sheet(isPresented: $showCameraView) { cameraView }
         }
     }
 }
