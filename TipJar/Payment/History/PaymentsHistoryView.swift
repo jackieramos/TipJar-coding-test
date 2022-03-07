@@ -18,9 +18,10 @@ struct PaymentsHistoryView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 38.0) {
+            VStack(spacing: .spacing38) {
                 ForEach(tips) { tip in
                     Button {
+                        viewModel.selectedTip = tip
                         showDetails = true
                     } label: {
                         paymentItem(date: tip.savedDate.default,
@@ -30,12 +31,12 @@ struct PaymentsHistoryView: View {
                     }
                 }
             }
+            .padding(.spacing24)
         }
-        .padding(.spacing24)
         .navigationBarTitle("SAVED PAYMENTS", displayMode: .inline)
         .customBackButton(isShowing: $isShowing)
         .modal(isShowing: $showDetails) {
-            PaymentDetailsView()
+            PaymentDetailsView(viewModel: PaymentDetailsViewModel(tip: viewModel.selectedTip))
         }
     }
 
@@ -62,7 +63,7 @@ struct PaymentsHistoryView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 53.0, height: 53.0)
-                .cornerRadius(12)
+                .cornerRadius(.radius12)
         }
     }
 }

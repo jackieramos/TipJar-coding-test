@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct PaymentDetailsView: View {
+
+    @StateObject var viewModel: PaymentDetailsViewModel
+
     var body: some View {
-        VStack(spacing: 13) {
-            Image("tipJarLogo")
+        VStack(spacing: .spacing13) {
+            Image(uiImage: viewModel.getImage(viewModel.imageFileName))
                 .resizable()
                 .scaledToFit()
                 .frame(height: 399)
@@ -18,13 +21,13 @@ struct PaymentDetailsView: View {
                 .cornerRadius(.radius12)
             
             VStack(alignment: .leading, spacing: .spacing12) {
-                Text("2021 January 21")
+                Text(viewModel.savedDate)
                     .defaultBoldTextSize()
                 HStack {
-                    Text("$205.23")
+                    Text(viewModel.amount)
                         .largeBoldTextSize()
                     Spacer()
-                    Text("Tip: $20.52")
+                    Text(viewModel.tipAmount)
                         .defaultBoldTextSize(Color("7d7d7d"))
                 }
             }
@@ -38,6 +41,6 @@ struct PaymentDetailsView: View {
 
 struct PaymentDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentDetailsView()
+        PaymentDetailsView(viewModel: PaymentDetailsViewModel())
     }
 }

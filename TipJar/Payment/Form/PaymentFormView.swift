@@ -130,7 +130,7 @@ struct PaymentFormView: View, KeyboardReadable {
         VStack(alignment: .leading, spacing: .spacing28) {
             HStack(spacing: .spacing13) {
                 Button {
-                    checkboxState = true
+                    checkboxState.toggle()
                 } label: {
                     Image(checkboxState ? "checkSelected" : "checkUnselected", bundle: .main)
                 }
