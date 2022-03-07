@@ -16,7 +16,7 @@
 		4D9F761327D22AC900EF1FB3 /* Views+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */; };
 		4D9F761627D230AA00EF1FB3 /* View+Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761527D230AA00EF1FB3 /* View+Modal.swift */; };
 		4D9F761827D311C200EF1FB3 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761727D311C200EF1FB3 /* ModalView.swift */; };
-		4D9F761B27D31D0300EF1FB3 /* Tip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761A27D31D0300EF1FB3 /* Tip.swift */; };
+		4D9F761B27D31D0300EF1FB3 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761A27D31D0300EF1FB3 /* Payment.swift */; };
 		4D9F761E27D325FC00EF1FB3 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761D27D325FB00EF1FB3 /* ButtonStyles.swift */; };
 		4D9F762027D3294A00EF1FB3 /* CGFloat+Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761F27D3294A00EF1FB3 /* CGFloat+Spacing.swift */; };
 		4D9F762227D32BBB00EF1FB3 /* Text+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F762127D32BBB00EF1FB3 /* Text+ViewModifiers.swift */; };
@@ -66,7 +66,7 @@
 		4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views+ViewModifiers.swift"; sourceTree = "<group>"; };
 		4D9F761527D230AA00EF1FB3 /* View+Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modal.swift"; sourceTree = "<group>"; };
 		4D9F761727D311C200EF1FB3 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
-		4D9F761A27D31D0300EF1FB3 /* Tip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tip.swift; sourceTree = "<group>"; };
+		4D9F761A27D31D0300EF1FB3 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		4D9F761D27D325FB00EF1FB3 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		4D9F761F27D3294A00EF1FB3 /* CGFloat+Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Spacing.swift"; sourceTree = "<group>"; };
 		4D9F762127D32BBB00EF1FB3 /* Text+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+ViewModifiers.swift"; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		4D9F761927D31C9500EF1FB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4D9F761A27D31D0300EF1FB3 /* Tip.swift */,
+				4D9F761A27D31D0300EF1FB3 /* Payment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -440,7 +440,7 @@
 				4DFD2F3D27D45629005175B5 /* KeyboardAccessoryView.swift in Sources */,
 				4D9F761327D22AC900EF1FB3 /* Views+ViewModifiers.swift in Sources */,
 				4D5BE07027D207CE00EB2BAE /* PanelView.swift in Sources */,
-				4D9F761B27D31D0300EF1FB3 /* Tip.swift in Sources */,
+				4D9F761B27D31D0300EF1FB3 /* Payment.swift in Sources */,
 				4D5BE06C27D2061B00EB2BAE /* PaymentDetailsViewModel.swift in Sources */,
 				4DFD2F5327D65DD3005175B5 /* AppFileManager.swift in Sources */,
 				4D9F762227D32BBB00EF1FB3 /* Text+ViewModifiers.swift in Sources */,

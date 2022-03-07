@@ -11,7 +11,7 @@ struct PaymentsHistoryView: View {
     @StateObject private var viewModel: PaymentsHistoryViewModel = PaymentsHistoryViewModel()
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\.savedDate, order: .reverse)])
-    var tips: FetchedResults<Tip>
+    var payments: FetchedResults<Payment>
 
     @Binding var isShowing: Bool
     @State private var showDetails: Bool = false
@@ -19,15 +19,15 @@ struct PaymentsHistoryView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: .spacing38) {
-                ForEach(tips) { tip in
+                ForEach(payments) { payment in
                     Button {
-                        viewModel.selectedTip = tip
+                        viewModel.selectedPayment = payment
                         showDetails = true
                     } label: {
-                        paymentItem(date: tip.savedDate.default,
-                                    amount: tip.amount,
-                                    totalTip: "Tip: \(tip.totalTipAmount.toCurrencyString())",
-                                    imageFileName: tip.imageFileName)
+                        paymentItem(date: payment.savedDate.default,
+                                    amount: payment.amount,
+                                    totalTip: "Tip: \(payment.totalTipAmount.toCurrencyString())",
+                                    imageFileName: payment.imageFileName)
                     }
                 }
             }
@@ -36,7 +36,7 @@ struct PaymentsHistoryView: View {
         .navigationBarTitle("SAVED PAYMENTS", displayMode: .inline)
         .customBackButton(isShowing: $isShowing)
         .modal(isShowing: $showDetails) {
-            PaymentDetailsView(viewModel: PaymentDetailsViewModel(tip: viewModel.selectedTip))
+            PaymentDetailsView(viewModel: PaymentDetailsViewModel(payment: viewModel.selectedPayment))
         }
     }
 

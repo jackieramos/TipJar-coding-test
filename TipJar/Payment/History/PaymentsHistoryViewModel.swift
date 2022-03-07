@@ -10,7 +10,7 @@ import SwiftUI
 
 class PaymentsHistoryViewModel: ObservableObject {
 
-    var selectedTip: Tip?
+    var selectedPayment: Payment?
 
     func getImage(_ fileName: String) -> UIImage {
         AppFileManager.getImage(fileName) ?? (UIImage(named: "tipJarLogo") ?? UIImage())

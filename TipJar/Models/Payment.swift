@@ -1,5 +1,5 @@
 //
-//  Tip.swift
+//  Payment.swift
 //  TipJar
 //
 //  Created by Jackie Ramos on 3/5/22.
@@ -7,8 +7,8 @@
 
 import CoreData
 
-@objc(Tip)
-class Tip: NSManagedObject, Identifiable {
+@objc(Payment)
+class Payment: NSManagedObject, Identifiable {
     @NSManaged var id: UUID
     @NSManaged var savedDate: Date
     @NSManaged var amount: NSDecimalNumber

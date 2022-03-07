@@ -68,7 +68,7 @@ class PaymentFormViewModel: ObservableObject {
     }
 
     func saveTip(_ context: NSManagedObjectContext, imageFileName: String = "") {
-        let _ = Tip(context: context, amount: amount, numberOfPerson: numberOfPersons, imageFileName: imageFileName)
+        let _ = Payment(context: context, amount: amount, numberOfPerson: numberOfPersons, imageFileName: imageFileName)
         do {
             try context.save()
         } catch {

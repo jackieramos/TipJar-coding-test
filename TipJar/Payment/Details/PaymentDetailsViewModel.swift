@@ -8,26 +8,26 @@
 import UIKit
 
 class PaymentDetailsViewModel: ObservableObject {
-    let tip: Tip?
+    let payment: Payment?
 
     var savedDate: String {
-        tip?.savedDate.default ?? ""
+        payment?.savedDate.default ?? ""
     }
 
     var imageFileName: String {
-        tip?.imageFileName ?? ""
+        payment?.imageFileName ?? ""
     }
 
     var amount: String {
-        tip?.amount.toCurrencyString() ?? ""
+        payment?.amount.toCurrencyString() ?? ""
     }
 
     var tipAmount: String {
-        "Tip: \(tip?.totalTipAmount.toCurrencyString() ?? "")" 
+        "Tip: \(payment?.totalTipAmount.toCurrencyString() ?? "")" 
     }
 
-    init(tip: Tip? = nil) {
-        self.tip = tip
+    init(payment: Payment? = nil) {
+        self.payment = payment
     }
 
     func getImage(_ fileName: String) -> UIImage {
