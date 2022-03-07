@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PaymentFormView: View, KeyboardReadable {
+    @Environment(\.managedObjectContext) var context
     @StateObject private var viewModel: PaymentFormViewModel = PaymentFormViewModel()
     @State private var showHistory: Bool = false
 
@@ -16,14 +17,14 @@ struct PaymentFormView: View, KeyboardReadable {
         HStack(spacing: .zero) {
             Spacer()
 
-            Image("tipJarLogo", bundle: .main)
+            Image("tipJarLogo")
 
             Spacer()
 
             NavigationLink(isActive: $showHistory) {
                 PaymentsHistoryView(isShowing: $showHistory)
             } label: {
-                Image("history", bundle: .main)
+                Image("history")
             }
         }
     }
@@ -35,7 +36,7 @@ struct PaymentFormView: View, KeyboardReadable {
                 .defaultBoldTextSize()
             PanelView {
                 HStack(spacing: .spacing16) {
-                    Text(Decimal.currencySymbol)
+                    Text(NSDecimalNumber.currencySymbol)
                         .largeBoldTextSize()
                     TextField(viewModel.placeHolder, text: $viewModel.amountInString)
                         .extraLargeBoldTextFieldSize()
@@ -57,7 +58,7 @@ struct PaymentFormView: View, KeyboardReadable {
 
             HStack(spacing: .zero) {
                 Button {
-                    viewModel.tip.numberOfPerson += 1
+                    viewModel.numberOfPersons += 1
                 } label: {
                     Image("plus", bundle: .main)
                 }
@@ -65,14 +66,14 @@ struct PaymentFormView: View, KeyboardReadable {
 
                 Spacer()
 
-                Text("\(viewModel.tip.numberOfPerson)")
+                Text("\(viewModel.numberOfPersons)")
                     .extraLargeBoldTextSize()
 
                 Spacer()
 
                 Button {
                     if viewModel.canDecreaseNumberOfPerson {
-                        viewModel.tip.numberOfPerson -= 1
+                        viewModel.numberOfPersons -= 1
                     }
                 } label: {
                     Image("minus", bundle: .main)
@@ -109,7 +110,7 @@ struct PaymentFormView: View, KeyboardReadable {
                 Text("Total Tip")
                     .defaultBoldTextSize()
                 Spacer()
-                Text(viewModel.tip.totalTipAmount.toCurrencyString())
+                Text(viewModel.totalTipAmountInString)
                     .defaultBoldTextSize()
             }
 
@@ -117,7 +118,7 @@ struct PaymentFormView: View, KeyboardReadable {
                 Text("Per Person")
                     .largeBoldTextSize()
                 Spacer()
-                Text(viewModel.tip.tipPerPerson.toCurrencyString())
+                Text(viewModel.tipPerPersonInString)
                     .largeBoldTextSize()
             }
         }
@@ -139,7 +140,8 @@ struct PaymentFormView: View, KeyboardReadable {
             }
 
             Button("Save payment") {
-                
+                viewModel.saveTip(context)
+                showHistory = true
             }
             .buttonStyle(CallToActionGradientButtonStyle())
         }
@@ -176,6 +178,9 @@ struct PaymentFormView: View, KeyboardReadable {
             .hiddenNavigationBarStyle()
             .onReceive(keyboardPublisher) { value in
                 viewModel.isKeyboardVisible = value
+            }
+            .alert(isPresented: $viewModel.showErrorAlert) {
+                Alert(title: Text("Something went wrong"), message: Text("Data can't be saved"))
             }
         }
     }

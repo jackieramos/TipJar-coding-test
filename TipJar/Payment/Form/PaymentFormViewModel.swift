@@ -6,29 +6,55 @@
 //
 
 import Foundation
+import CoreData
 
 class PaymentFormViewModel: ObservableObject {
-    @Published var tip: Tip
+    @Published var amount: NSDecimalNumber
+    @Published var numberOfPersons: Int = 1
     @Published var amountInString: String = "" {
         didSet {
-            tip.amount = amountInString.isEmpty ? defaultValue : amountInString.toDecimal
+            amount = amountInString.isEmpty ? defaultValue : amountInString.toDecimal
         }
     }
     @Published var isKeyboardVisible: Bool = false
+    @Published var showErrorAlert: Bool = false
 
-    private let defaultValue: Decimal = 100.00
+    private let defaultValue: NSDecimalNumber = NSDecimalNumber(decimal: 100.00)
+    private let tipPercentage: NSDecimalNumber = NSDecimalNumber(decimal: 10.0/100.0)
     let placeHolder: String
 
+    var totalTipAmount: NSDecimalNumber {
+        amount.multiplying(by: tipPercentage)
+    }
+
     var canDecreaseNumberOfPerson: Bool {
-        tip.numberOfPerson > 1
+        numberOfPersons > 1
     }
 
     var formattedAmountInString: String {
         amountInString.isEmpty ? "" : amountInString.toDecimal.toCurrencyString(showSymbol: false)
     }
 
+    var totalTipAmountInString: String {
+        totalTipAmount.toCurrencyString()
+    }
+
+    var tipPerPersonInString: String {
+        let tipPerPerson = totalTipAmount.dividing(by: NSDecimalNumber(value: numberOfPersons))
+        return tipPerPerson.toCurrencyString()
+    }
+
     init() {
-        tip = Tip(amount: defaultValue, numberOfPerson: 1, tipPercentage: 10)
+        amount = defaultValue
         placeHolder = defaultValue.toCurrencyString(showSymbol: false)
+    }
+
+    func saveTip(_ context: NSManagedObjectContext) {
+        let _ = Tip(context: CoreDataManager.shared.container.viewContext, amount: amount, numberOfPerson: numberOfPersons, imageDirectory: "")
+        do {
+            try context.save()
+        } catch {
+            showErrorAlert = true
+        }
     }
 }

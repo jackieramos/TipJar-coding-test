@@ -12,6 +12,7 @@ struct TipJarApp: App {
     var body: some Scene {
         WindowGroup {
             PaymentFormView()
+                .environment(\.managedObjectContext, CoreDataManager.shared.container.viewContext)
         }
     }
 }

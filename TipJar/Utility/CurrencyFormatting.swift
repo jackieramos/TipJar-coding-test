@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension Decimal {
+public extension NSDecimalNumber {
     static var currencySymbol: String = {
         let formatter: NumberFormatter = .currency
         return formatter.currencySymbol ?? ""
@@ -15,7 +15,7 @@ public extension Decimal {
 
     func toCurrencyString(showSymbol: Bool = true) -> String {
         let formatter: NumberFormatter = .currency
-        var value: Decimal = self
+        var value: Decimal = self.decimalValue
         var rounded: Decimal = Decimal()
         NSDecimalRound(&rounded, &value, 2, .plain)
 
@@ -32,8 +32,10 @@ public extension Decimal {
 }
 
 public extension String {
-    var toDecimal: Decimal {
-        Decimal(string: self, locale: .current) ?? 0.0
+    var toDecimal: NSDecimalNumber {
+        let formatter: NumberFormatter = .currency
+        let amount = formatter.number(from: self)?.decimalValue ?? Decimal(0.0)
+        return NSDecimalNumber(decimal: amount)
     }
 }
 

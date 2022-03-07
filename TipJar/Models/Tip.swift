@@ -5,22 +5,24 @@
 //  Created by Jackie Ramos on 3/5/22.
 //
 
-import Foundation
+import CoreData
 
-struct Tip {
-    var amount: Decimal
-    var numberOfPerson: Int
-    var tipPercentage: Decimal
+@objc(Tip)
+class Tip: NSManagedObject, Identifiable {
+    @NSManaged var id: UUID
+    @NSManaged var savedDate: Date
+    @NSManaged var amount: NSDecimalNumber
+    @NSManaged var totalTipAmount: NSDecimalNumber
+    @NSManaged var imageDirectory: String
 
-    var tipInDecimal: Decimal {
-        tipPercentage/100.0
-    }
+    private let tipPercentage: NSDecimalNumber = NSDecimalNumber(decimal: 10.0/100.0)
 
-    var tipPerPerson: Decimal {
-        totalTipAmount / Decimal(numberOfPerson)
-    }
-
-    var totalTipAmount: Decimal {
-        amount * tipInDecimal
+    convenience init(context: NSManagedObjectContext, amount: NSDecimalNumber?, numberOfPerson: Int, imageDirectory: String) {
+        self.init(context: context)
+        self.id = UUID()
+        self.savedDate = Date()
+        self.amount = amount ?? NSDecimalNumber(value: 0.0)
+        self.totalTipAmount = amount?.multiplying(by: tipPercentage) ?? NSDecimalNumber(value: 0.0)
+        self.imageDirectory = imageDirectory
     }
 }

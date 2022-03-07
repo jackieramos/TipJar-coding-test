@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PaymentsHistoryView: View {
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.savedDate, order: .reverse)])
+    var tips: FetchedResults<Tip>
 
     @Binding var isShowing: Bool
     @State private var showDetails: Bool = false
@@ -15,17 +17,13 @@ struct PaymentsHistoryView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 38.0) {
-                paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
-                    .onTapGesture {
+                ForEach(tips) { tip in
+                    Button {
                         showDetails = true
+                    } label: {
+                        paymentItem(date: tip.savedDate.default, amount: tip.amount, totalTip: "Tip: \(tip.totalTipAmount.toCurrencyString())")
                     }
-                paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
-                paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
-                paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
-                paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
-                paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
-                paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
-                paymentItem(date: "2021 January 21", amount: "$205.23", totalTip: "Tip: $20.52")
+                }
             }
         }
         .padding(.spacing24)
@@ -37,13 +35,13 @@ struct PaymentsHistoryView: View {
     }
 
     @ViewBuilder
-    private func paymentItem(date: String, amount: String, totalTip: String) -> some View {
+    private func paymentItem(date: String, amount: NSDecimalNumber, totalTip: String) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: .spacing12) {
                 Text(date)
                     .defaultBoldTextSize()
-                HStack(spacing: 22) {
-                    Text(amount)
+                HStack(spacing: .spacing21) {
+                    Text(amount.toCurrencyString())
                         .largeBoldTextSize()
                     Text(totalTip)
                         .defaultBoldTextSize(Color("7d7d7d"))
