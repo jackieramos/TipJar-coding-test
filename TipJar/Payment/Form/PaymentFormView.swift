@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct PaymentFormView: View {
-
+struct PaymentFormView: View, KeyboardReadable {
+    @StateObject private var viewModel: PaymentFormViewModel = PaymentFormViewModel()
     @State private var showHistory: Bool = false
 
     @ViewBuilder
@@ -34,12 +34,13 @@ struct PaymentFormView: View {
             Text("Enter amount")
                 .defaultBoldTextSize()
             PanelView {
-                HStack(spacing: .zero) {
-                    Text("$")
+                HStack(spacing: .spacing16) {
+                    Text(Decimal.currencySymbol)
                         .largeBoldTextSize()
-                    Spacer()
-                    Text("200.00")
-                        .extraLargeBoldTextSize()
+                    TextField(viewModel.placeHolder, text: $viewModel.amountInString)
+                        .extraLargeBoldTextFieldSize()
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.horizontal, .spacing21)
@@ -56,7 +57,7 @@ struct PaymentFormView: View {
 
             HStack(spacing: .zero) {
                 Button {
-                    print("Pressed")
+                    viewModel.tip.numberOfPerson += 1
                 } label: {
                     Image("plus", bundle: .main)
                 }
@@ -64,13 +65,15 @@ struct PaymentFormView: View {
 
                 Spacer()
 
-                Text("2")
+                Text("\(viewModel.tip.numberOfPerson)")
                     .extraLargeBoldTextSize()
 
                 Spacer()
 
                 Button {
-                    
+                    if viewModel.canDecreaseNumberOfPerson {
+                        viewModel.tip.numberOfPerson -= 1
+                    }
                 } label: {
                     Image("minus", bundle: .main)
                 }
@@ -85,11 +88,11 @@ struct PaymentFormView: View {
             Text("% TIP")
                 .defaultBoldTextSize()
             PanelView {
-                HStack(spacing: .zero) {
+                HStack(spacing: .spacing16) {
                     Spacer()
-                    Text("200.00")
+                    Text("10")
                         .extraLargeBoldTextSize()
-                    Spacer()
+                        .frame(maxWidth: .infinity, alignment: .center)
                     Text("%")
                         .largeBoldTextSize()
                 }
@@ -106,7 +109,7 @@ struct PaymentFormView: View {
                 Text("Total Tip")
                     .defaultBoldTextSize()
                 Spacer()
-                Text("$20.00")
+                Text(viewModel.tip.totalTipAmount.toCurrencyString())
                     .defaultBoldTextSize()
             }
 
@@ -114,7 +117,7 @@ struct PaymentFormView: View {
                 Text("Per Person")
                     .largeBoldTextSize()
                 Spacer()
-                Text("$10.00")
+                Text(viewModel.tip.tipPerPerson.toCurrencyString())
                     .largeBoldTextSize()
             }
         }
@@ -142,20 +145,38 @@ struct PaymentFormView: View {
         }
     }
 
+    @ViewBuilder
+    private var keyboardAccessory: some View {
+        if viewModel.isKeyboardVisible {
+            VStack(spacing: .zero) {
+                KeyboardAccessoryView(title: "Done") {
+                    viewModel.amountInString = viewModel.formattedAmountInString
+                }
+            }
+            .animation(.default, value: viewModel.isKeyboardVisible)
+        }
+    }
+
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: .spacing32) {
-                    header
-                    enterAmount
-                    numberOfPeople
-                    tip
-                    summary
-                    footer
+            VStack(spacing: .zero) {
+                ScrollView {
+                    VStack(spacing: .spacing32) {
+                        header
+                        enterAmount
+                        numberOfPeople
+                        tip
+                        summary
+                        footer
+                    }
+                    .padding(.spacing24)
                 }
-                .padding(.spacing24)
+                keyboardAccessory
             }
             .hiddenNavigationBarStyle()
+            .onReceive(keyboardPublisher) { value in
+                viewModel.isKeyboardVisible = value
+            }
         }
     }
 }

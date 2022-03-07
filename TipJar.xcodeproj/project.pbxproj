@@ -20,6 +20,9 @@
 		4D9F761E27D325FC00EF1FB3 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761D27D325FB00EF1FB3 /* ButtonStyles.swift */; };
 		4D9F762027D3294A00EF1FB3 /* CGFloat+Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F761F27D3294A00EF1FB3 /* CGFloat+Spacing.swift */; };
 		4D9F762227D32BBB00EF1FB3 /* Text+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F762127D32BBB00EF1FB3 /* Text+ViewModifiers.swift */; };
+		4D9F762427D3AF6300EF1FB3 /* TextField+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F762327D3AF6300EF1FB3 /* TextField+ViewModifiers.swift */; };
+		4D9F762A27D3BA9200EF1FB3 /* CurrencyFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F762927D3BA9200EF1FB3 /* CurrencyFormatting.swift */; };
+		4DFD2F3D27D45629005175B5 /* KeyboardAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F3C27D45629005175B5 /* KeyboardAccessoryView.swift */; };
 		6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1927B6176F00E54296 /* TipJarApp.swift */; };
 		6C51DC1C27B6176F00E54296 /* PaymentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */; };
 		6C51DC1E27B6177000E54296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DC1D27B6177000E54296 /* Assets.xcassets */; };
@@ -61,6 +64,9 @@
 		4D9F761D27D325FB00EF1FB3 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		4D9F761F27D3294A00EF1FB3 /* CGFloat+Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Spacing.swift"; sourceTree = "<group>"; };
 		4D9F762127D32BBB00EF1FB3 /* Text+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+ViewModifiers.swift"; sourceTree = "<group>"; };
+		4D9F762327D3AF6300EF1FB3 /* TextField+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+ViewModifiers.swift"; sourceTree = "<group>"; };
+		4D9F762927D3BA9200EF1FB3 /* CurrencyFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatting.swift; sourceTree = "<group>"; };
+		4DFD2F3C27D45629005175B5 /* KeyboardAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAccessoryView.swift; sourceTree = "<group>"; };
 		6C51DC1627B6176F00E54296 /* TipJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51DC1927B6176F00E54296 /* TipJarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarApp.swift; sourceTree = "<group>"; };
 		6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormView.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 			children = (
 				4D5BE06F27D207CE00EB2BAE /* PanelView.swift */,
 				4D9F761727D311C200EF1FB3 /* ModalView.swift */,
+				4DFD2F3C27D45629005175B5 /* KeyboardAccessoryView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -161,6 +168,7 @@
 			children = (
 				4D9F761227D22AC900EF1FB3 /* Views+ViewModifiers.swift */,
 				4D9F762127D32BBB00EF1FB3 /* Text+ViewModifiers.swift */,
+				4D9F762327D3AF6300EF1FB3 /* TextField+ViewModifiers.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -180,6 +188,14 @@
 				4D9F761A27D31D0300EF1FB3 /* Tip.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4DFD2F3E27D46156005175B5 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4D9F762927D3BA9200EF1FB3 /* CurrencyFormatting.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		6C51DC0D27B6176F00E54296 = {
@@ -206,6 +222,7 @@
 		6C51DC1827B6176F00E54296 /* TipJar */ = {
 			isa = PBXGroup;
 			children = (
+				4DFD2F3E27D46156005175B5 /* Utility */,
 				4D9F761927D31C9500EF1FB3 /* Models */,
 				4D5BE06D27D207A700EB2BAE /* UI */,
 				4D5BE05F27D2046100EB2BAE /* Payment */,
@@ -381,11 +398,14 @@
 				4D5BE06A27D2061000EB2BAE /* PaymentDetailsView.swift in Sources */,
 				4D9F761E27D325FC00EF1FB3 /* ButtonStyles.swift in Sources */,
 				4D9F762027D3294A00EF1FB3 /* CGFloat+Spacing.swift in Sources */,
+				4D9F762427D3AF6300EF1FB3 /* TextField+ViewModifiers.swift in Sources */,
+				4DFD2F3D27D45629005175B5 /* KeyboardAccessoryView.swift in Sources */,
 				4D9F761327D22AC900EF1FB3 /* Views+ViewModifiers.swift in Sources */,
 				4D5BE07027D207CE00EB2BAE /* PanelView.swift in Sources */,
 				4D9F761B27D31D0300EF1FB3 /* Tip.swift in Sources */,
 				4D5BE06C27D2061B00EB2BAE /* PaymentDetailsViewModel.swift in Sources */,
 				4D9F762227D32BBB00EF1FB3 /* Text+ViewModifiers.swift in Sources */,
+				4D9F762A27D3BA9200EF1FB3 /* CurrencyFormatting.swift in Sources */,
 				6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,8 +476,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: Jackielynn Ramos (TU6EDWPPAK)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Y9XY5ZV3YG;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -517,8 +539,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: Jackielynn Ramos (TU6EDWPPAK)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y9XY5ZV3YG;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -544,10 +568,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TipJar/Preview Content\"";
-				DEVELOPMENT_TEAM = 299HJ3G3BP;
+				DEVELOPMENT_TEAM = 295N623Y7P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -555,13 +580,16 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bitcoin.tipjar.TipJar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackie.tipJar;
+				PRODUCT_NAME = TipJar;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -573,10 +601,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TipJar/Preview Content\"";
-				DEVELOPMENT_TEAM = 299HJ3G3BP;
+				DEVELOPMENT_TEAM = 295N623Y7P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -584,13 +613,16 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bitcoin.tipjar.TipJar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jackie.tipJar;
+				PRODUCT_NAME = TipJar;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -604,7 +636,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 299HJ3G3BP;
+				DEVELOPMENT_TEAM = Y9XY5ZV3YG;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -624,7 +656,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 299HJ3G3BP;
+				DEVELOPMENT_TEAM = Y9XY5ZV3YG;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
@@ -641,9 +673,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 299HJ3G3BP;
+				DEVELOPMENT_TEAM = Y9XY5ZV3YG;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitcoin.tipjar.TipJarUITests;
@@ -659,9 +692,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 299HJ3G3BP;
+				DEVELOPMENT_TEAM = Y9XY5ZV3YG;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bitcoin.tipjar.TipJarUITests;

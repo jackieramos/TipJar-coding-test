@@ -17,16 +17,13 @@ public struct PanelView<Content: View>: View {
     }
 
     public var body: some View {
-        VStack(spacing: .zero) {
-            content
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.white)
-        .cornerRadius(cornerRadius)
-        .drawingGroup()
-        .overlay(
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(Color("cbcbcb", bundle: .main), lineWidth: 1)
-        )
+        content
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.white)
+            .cornerRadius(cornerRadius)
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(Color("cbcbcb"), lineWidth: 1)
+            )
     }
 }
