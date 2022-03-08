@@ -21,7 +21,7 @@ class AppFileManager {
         return urls.last
     }
     
-    static func saveImage(_ fileName: String, image: UIImage, completion: @escaping (Error?) -> Void) {
+    static func saveImage(_ fileName: String, image: UIImage, completion: @escaping (Error?) -> Void = { _ in }) {
         guard let documentsDirectory = self.applicationSupportURL() else {
             completion(NoApplicationSupportDirectoryAvailable())
             return

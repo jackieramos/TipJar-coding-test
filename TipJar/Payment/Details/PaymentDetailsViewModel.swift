@@ -8,7 +8,7 @@
 import UIKit
 
 class PaymentDetailsViewModel: ObservableObject {
-    let payment: Payment?
+    var payment: Payment?
 
     var savedDate: String {
         payment?.savedDate.default ?? ""
@@ -28,9 +28,5 @@ class PaymentDetailsViewModel: ObservableObject {
 
     init(payment: Payment? = nil) {
         self.payment = payment
-    }
-
-    func getImage(_ fileName: String) -> UIImage {
-        AppFileManager.getImage(fileName) ?? (UIImage(named: "tipJarLogo") ?? UIImage())
     }
 }

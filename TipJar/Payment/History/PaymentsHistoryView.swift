@@ -59,7 +59,7 @@ struct PaymentsHistoryView: View {
 
             Spacer()
 
-            Image(uiImage: viewModel.getImage(imageFileName))
+            Image(uiImage: AppFileManager.getImage(imageFileName) ?? UIImage())
                 .resizable()
                 .scaledToFill()
                 .frame(width: 53.0, height: 53.0)

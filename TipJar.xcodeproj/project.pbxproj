@@ -29,6 +29,9 @@
 		4DFD2F4F27D63410005175B5 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F4E27D63410005175B5 /* DateFormatting.swift */; };
 		4DFD2F5127D659CD005175B5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F5027D659CD005175B5 /* CameraView.swift */; };
 		4DFD2F5327D65DD3005175B5 /* AppFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F5227D65DD3005175B5 /* AppFileManager.swift */; };
+		4DFD2F5827D78835005175B5 /* PaymentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F5427D7863F005175B5 /* PaymentTests.swift */; };
+		4DFD2F5C27D78D02005175B5 /* PaymentFormViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F5B27D78D02005175B5 /* PaymentFormViewModelTests.swift */; };
+		4DFD2F6027D79CD3005175B5 /* PaymentDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD2F5F27D79CD3005175B5 /* PaymentDetailsViewModelTests.swift */; };
 		6C51DC1A27B6176F00E54296 /* TipJarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1927B6176F00E54296 /* TipJarApp.swift */; };
 		6C51DC1C27B6176F00E54296 /* PaymentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */; };
 		6C51DC1E27B6177000E54296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C51DC1D27B6177000E54296 /* Assets.xcassets */; };
@@ -79,6 +82,9 @@
 		4DFD2F4E27D63410005175B5 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 		4DFD2F5027D659CD005175B5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		4DFD2F5227D65DD3005175B5 /* AppFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileManager.swift; sourceTree = "<group>"; };
+		4DFD2F5427D7863F005175B5 /* PaymentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTests.swift; sourceTree = "<group>"; };
+		4DFD2F5B27D78D02005175B5 /* PaymentFormViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormViewModelTests.swift; sourceTree = "<group>"; };
+		4DFD2F5F27D79CD3005175B5 /* PaymentDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		6C51DC1627B6176F00E54296 /* TipJar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipJar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C51DC1927B6176F00E54296 /* TipJarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarApp.swift; sourceTree = "<group>"; };
 		6C51DC1B27B6176F00E54296 /* PaymentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFormView.swift; sourceTree = "<group>"; };
@@ -278,6 +284,9 @@
 		6C51DC2927B6177000E54296 /* TipJarTests */ = {
 			isa = PBXGroup;
 			children = (
+				4DFD2F5F27D79CD3005175B5 /* PaymentDetailsViewModelTests.swift */,
+				4DFD2F5B27D78D02005175B5 /* PaymentFormViewModelTests.swift */,
+				4DFD2F5427D7863F005175B5 /* PaymentTests.swift */,
 				6C51DC2A27B6177000E54296 /* TipJarTests.swift */,
 			);
 			path = TipJarTests;
@@ -454,7 +463,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DFD2F6027D79CD3005175B5 /* PaymentDetailsViewModelTests.swift in Sources */,
+				4DFD2F5827D78835005175B5 /* PaymentTests.swift in Sources */,
 				6C51DC2B27B6177000E54296 /* TipJarTests.swift in Sources */,
+				4DFD2F5C27D78D02005175B5 /* PaymentFormViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

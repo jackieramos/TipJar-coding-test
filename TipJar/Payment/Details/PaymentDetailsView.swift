@@ -13,7 +13,7 @@ struct PaymentDetailsView: View {
 
     var body: some View {
         VStack(spacing: .spacing13) {
-            Image(uiImage: viewModel.getImage(viewModel.imageFileName))
+            Image(uiImage: AppFileManager.getImage(viewModel.imageFileName) ?? UIImage())
                 .resizable()
                 .scaledToFit()
                 .frame(height: 399)
