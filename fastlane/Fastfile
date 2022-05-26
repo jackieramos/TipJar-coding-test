@@ -1,0 +1,35 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  lane :lh_tests_and_code_coverage do
+    run_tests(
+      devices: ["iPhone 12"],
+      scheme: "TipJar",
+      code_coverage: true,
+      clean: true
+    )
+
+    xcov(
+      project: "TipJar.xcodeproj",
+      scheme: "TipJar",
+      json_report: true,
+      minimum_coverage_percentage: 5.0,
+      output_directory: "xcov_output"
+    )
+  end
+end

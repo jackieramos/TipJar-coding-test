@@ -3,32 +3,25 @@ name: Test Coverage Report
 on: [push]
 
 jobs:
-  build:
+    build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - uses: actions/checkout@v2
+        - uses: actions/checkout@v2
 
-#      - name: Run tests
-#      - run: |
-#             xcodebuild build-for-testing \
-#                -project TipJar.xcodeproj \
-#                -scheme TipJar \
-#                -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.3'
-
-      - run: |
-            xcov -p TipJar.xcodeproj -s TipJar -o xcov_output --json_report true
-
-      - name: Get coverage
-        run: |
-            COVERAGE=`echo $(jq -r '.coverage' xcov_output/report.json)`
-      
-      - name: Create Awesome Badge
-        uses: schneegans/dynamic-badges-action@v1.4.0
-        with:
-            auth: ${{ secrets.GITHUB_TOKEN }}
-            gistID: af30c96d0823c18718fa89e47a3e990c
-            filename: test.json
-            label: Coverage
-            message: ${{ env.COVERAGE }}
-            color: orange
+        - uses: ruby/setup-ruby@v1
+            with:
+            ruby-version: '3.1.2'
+        - uses: maierj/fastlane-action@v2.2.0
+            with:
+            lane: 'lh_tests_and_code_coverage'
+            
+            - name: Create Awesome Badge
+            uses: schneegans/dynamic-badges-action@v1.4.0
+            with:
+                auth: ${{ secrets.GITHUB_TOKEN }}
+                gistID: af30c96d0823c18718fa89e47a3e990c
+                filename: test.json
+                label: Coverage
+                message: ${{ $COVERAGE }}
+                color: orange
