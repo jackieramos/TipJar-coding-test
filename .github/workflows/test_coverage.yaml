@@ -4,24 +4,70 @@ on: [push]
 
 jobs:
     build:
-    runs-on: ubuntu-latest
+        runs-on: macos-latest
     
-    steps:
-        - uses: actions/checkout@v2
+        steps:
+            - uses: actions/checkout@v2
 
-        - uses: ruby/setup-ruby@v1
-            with:
-            ruby-version: '3.1.2'
-        - uses: maierj/fastlane-action@v2.2.0
-            with:
-            lane: 'lh_tests_and_code_coverage'
+            - uses: ruby/setup-ruby@v1
+              with:
+                ruby-version: '3.1.2'
+
+#            - name: Remove File
+#              uses: JesseTG/rm@v1.0.2
+#              with:
+#                path: xcov_output
+#
+#            - uses: maierj/fastlane-action@v2.2.0
+#              with:
+#                lane: 'lh_tests_and_code_coverage'
+#
+#            - name: Get coverage
+#              run: |
+#                TOTAL_PERCENTAGE_DEC=`echo $(jq -r '.coverage' xcov_output/report.json)`
+#                PERCENTAGE=`echo "$TOTAL_PERCENTAGE_DEC*100" | bc`
+#                TOTAL=`printf "%.2f" $PERCENTAGE`
+#                echo "COVERAGE=`echo $TOTAL`" >> $GITHUB_ENV
+#
+#            - name: Create Awesome Badge
+#              uses: schneegans/dynamic-badges-action@v1.4.0
+#              with:
+#                auth: ${{ secrets.GIST_SECRET }}
+#                gistID: af30c96d0823c18718fa89e47a3e990c
+#                filename: test.json
+#                label: Coverage
+#                message: ${{ env.COVERAGE }}
+#                valColorRange: ${{ env.COVERAGE }}
+#                maxColorRange: 100
+#                minColorRange: 0
+            - name: Get branch names
+              id: branch-name
+              uses: tj-actions/branch-names@v5.2
+
+            - name: Check branch name
+              run: echo "branch name - ${{ steps.branch-name.outputs.current_branch }}"
+
+            - name: Generate Badges
+              uses: jaywcjlove/generated-badges@main
+              with:
+                label: color
+                status: cyan
+                output: .github/badges/cyan.svg
+                
+            - name: Commit the badge (if it changed)
+              run: |
+                   if [[ `git status --porcelain` ]]; then
+                     git config --global user.email "jackielynn.ramos@gmail.com"
+                     git config --global user.name "jackieramos"
+                     git fetch && git checkout ${{ steps.branch-name.outputs.current_branch }}
+                     git add -A
+                     git commit -m "chore: update test report badges"
+                     git push
+                   fi
             
-            - name: Create Awesome Badge
-            uses: schneegans/dynamic-badges-action@v1.4.0
-            with:
-                auth: ${{ secrets.GITHUB_TOKEN }}
-                gistID: af30c96d0823c18718fa89e47a3e990c
-                filename: test.json
-                label: Coverage
-                message: ${{ $COVERAGE }}
-                color: orange
+#            - name: Add coverage report summary as comment
+#              uses: peter-evans/create-or-update-comment@v2
+#              with:
+#                 issue-number: ${{ github.event.pull_request.number }}
+#                 body: |
+#                    Test coverage summary report has been updated in [README.md](https://github.com/siteminder-au/mobile-ios/blob/${{ steps.branch-name.outputs.current_branch }}/README.md).
