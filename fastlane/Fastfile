@@ -21,23 +21,19 @@ platform :ios do
       devices: ["iPhone 12"],
       scheme: "TipJar",
       code_coverage: true,
+      result_bundle: true,
       clean: true
     )
 
-#    xcov(
-#      project: "TipJar.xcodeproj",
-#      scheme: "TipJar",
-#      json_report: true,
-#      minimum_coverage_percentage: 5.0,
-#      output_directory: "xcov_output"
-#   )
+    xcresult_path = File.absolute_path(Dir["test_output/*.xcresult"].first)
 
-    slather(
-      output_directory: "fastlane/html",
-      html: true,
+    xcov(
+      xccov_file_direct_path: xcresult_path,
+      project: "TipJar.xcodeproj",
       scheme: "TipJar",
-      proj: "TipJar.xcodeproj",
-#     ignore: [ "R.generated.swift", "Pods/*"]
-    )
+      json_report: true,
+      minimum_coverage_percentage: 5.0,
+      output_directory: "xcov_output"
+   )
   end
 end
