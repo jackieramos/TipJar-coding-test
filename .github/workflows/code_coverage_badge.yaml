@@ -18,6 +18,13 @@ jobs:
               with:
                 path: xcov_output
 
+            - uses: DamianReeves/write-file-action@master
+              with:
+                path: Gemfile
+                contents: |
+                    gem "xcov"
+                write-mode: append
+
             - uses: maierj/fastlane-action@v2.2.0
               with:
                 lane: 'lh_tests_and_code_coverage'
