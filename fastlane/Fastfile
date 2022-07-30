@@ -22,6 +22,7 @@ platform :ios do
       scheme: "TipJar",
       code_coverage: true,
       result_bundle: true,
+      output_directory: "test_output",
       clean: true
     )
 
