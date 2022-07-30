@@ -24,12 +24,20 @@ platform :ios do
       clean: true
     )
 
-    xcov(
-      project: "TipJar.xcodeproj",
+#    xcov(
+#      project: "TipJar.xcodeproj",
+#      scheme: "TipJar",
+#      json_report: true,
+#      minimum_coverage_percentage: 5.0,
+#      output_directory: "xcov_output"
+#   )
+
+    slather(
+      output_directory: "fastlane/html",
+      html: true,
       scheme: "TipJar",
-      json_report: true,
-      minimum_coverage_percentage: 5.0,
-      output_directory: "xcov_output"
+      proj: "TipJar.xcodeproj",
+#     ignore: [ "R.generated.swift", "Pods/*"]
     )
   end
 end
