@@ -26,15 +26,13 @@ platform :ios do
       clean: true
     )
 
-    xcresult_path = File.absolute_path(Dir["test_output/*.xcresult"].first)
-
     xcov(
       project: "TipJar.xcodeproj",
       scheme: "TipJar",
       json_report: true,
       minimum_coverage_percentage: 5.0,
       output_directory: "xcov_output",
-      xccov_file_direct_path: xcresult_path
+      xccov_file_direct_path: "test_output/TipJar.xcresult"
    )
   end
 end
