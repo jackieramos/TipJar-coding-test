@@ -13,14 +13,14 @@ jobs:
               with:
                 ruby-version: '3.1.2'
 
-#            - name: Remove File
-#              uses: JesseTG/rm@v1.0.2
-#              with:
-#                path: xcov_output
-#
-#            - uses: maierj/fastlane-action@v2.2.0
-#              with:
-#                lane: 'lh_tests_and_code_coverage'
+            - name: Remove File
+              uses: JesseTG/rm@v1.0.2
+              with:
+                path: xcov_output
+
+            - uses: maierj/fastlane-action@v2.2.0
+              with:
+                lane: 'lh_tests_and_code_coverage'
 
             - name: Get coverage
               run: |
